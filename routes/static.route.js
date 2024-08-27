@@ -10,8 +10,14 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/signup', (req, res) => {
-    return res.render("signup")
-})
+    try {
+        return res.render("signup");
+    } catch (error) {
+        console.error("Error rendering signup page:", error);
+        return res.status(500).send("Internal Server Error");
+    }
+});
+
 
 router.get('/login', (req, res) => {
     return res.render("login")
